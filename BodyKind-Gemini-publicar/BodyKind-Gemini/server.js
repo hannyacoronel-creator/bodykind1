@@ -120,6 +120,13 @@ app.post('/api/chat', async (req, res) => {
         error: 'Groq no devolvió una respuesta de texto.'
       });
     }
+    // Quitar símbolos de formato Markdown
+const cleanReply = reply
+  .replace(/^#{1,6}\s*/gm, '')
+  .replace(/\*/g, '')
+  .trim();
+
+return res.json({ reply: cleanReply });
 
     return res.json({ reply });
 
