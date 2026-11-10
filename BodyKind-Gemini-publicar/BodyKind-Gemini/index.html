@@ -1100,7 +1100,7 @@
             }, 2000);
         }
 
-        // ================= GEMINI CHATBOT LOGIC =================
+         // ================= GROQ CHATBOT LOGIC =================
         let chatHistory = [
             {
                 sender: 'bot',
@@ -1145,7 +1145,7 @@
         }
 
        
-async function callGeminiApi(history) {
+async function callGroqApi(history) {
     const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
@@ -1178,7 +1178,7 @@ async function callGeminiApi(history) {
             renderChatMessages();
 
             try {
-                const reply = await callGeminiApi(chatHistory);
+                const reply = await callGroqApi(chatHistory);
                 chatHistory.push({ sender: 'bot', text: reply });
             } catch (err) {
                 console.error(err);
